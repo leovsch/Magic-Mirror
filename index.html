@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Magic Mirror!</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+	<script src="angular/rss.js"></script>
+</head>
+<body ng-app="MagicMirrorApp">
+	<div>
+	    <div data-ng-controller="FeedCtrl">
+	        <div>                
+                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
+                <p class="text-left">{{feed.content}}</p>           
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>
