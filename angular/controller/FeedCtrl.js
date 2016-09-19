@@ -1,5 +1,3 @@
-var App = angular.module('MagicMirrorApp', []);
-var feeds = [];
 var feedcount = 0;
 var getNewsInterval = 3600000; // miliseconds (1 hour)
 var newsScrollInterval = 30000; // miliseconds (30 seconds)
