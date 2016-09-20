@@ -11,8 +11,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="angular/MagicMirrorApp.js"></script>
 		<script src="angular/service/FeedService.js"></script>
+		<script src="angular/service/WeatherService.js"></script>
 		<script src="angular/controller/FeedCtrl.js"></script>
 		<script src="angular/controller/ClockCtrl.js"></script>
+		<script src="angular/controller/WeatherCtrl.js"></script>
 	</head>
 	<body ng-app="MagicMirrorApp">
 		<div class="container-fluid">
@@ -26,6 +28,9 @@
 					</div>
 				</div>		
 				<angular-weather city="Houston"></angular-weather>	
+			</div>
+			<div class="row" ng-controller="WeatherCtrl">
+				
 			</div>
 			<div class="row">
 			    <div data-ng-controller="FeedCtrl">
