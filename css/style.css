@@ -1,18 +1,22 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
-*{
-    font-family:roboto;
-}
-
 body {
 	font-size: 20px;
 	color: white;
 	background-color: black;
+	font-family:'Roboto';	
 }
 
 a {
 	color: white;
 }
 
-.small{
-    font-size:11px;
+.datetime {
+	font-weight: 300;
+}
+
+.clock {
+	font-size: 80px;
+}
+
+.date {
+	font-size: 40px;
 }

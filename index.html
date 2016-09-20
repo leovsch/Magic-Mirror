@@ -2,6 +2,7 @@
 <html lang="nl">
 	<head>
 		<title>Magic Mirror!</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
@@ -16,14 +17,15 @@
 	<body ng-app="MagicMirrorApp">
 		<div class="container-fluid">
 			<div class="row" ng-controller="ClockCtrl">
-				<div class="text-center">
-					<div >
-						<h1>{{clock}}</h1>
+				<div class="text-center datetime" >
+					<div class="clock">
+						<span>{{clock}}</span>
 					</div>
-					<div>
-						<h2>{{date}}</h2>
+					<div class="date">
+						<span>{{date}}</span>
 					</div>
-				</div>			
+				</div>		
+				<angular-weather city="Houston"></angular-weather>	
 			</div>
 			<div class="row">
 			    <div data-ng-controller="FeedCtrl">
