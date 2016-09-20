@@ -2,7 +2,7 @@ var feedcount = 0;
 
 App.controller("FeedCtrl", ['$scope','FeedService', '$interval', 'config', function ($scope,Feed,$interval,config) {
     getnews = function () {
-            Feed.parseFeed('http://www.nu.nl/rss/Algemeen').then(function(res){
+            Feed.parseFeed(config.newsFeedRssUrl).then(function(res){
             feeds=res.data.responseData.feed.entries;
             $scope.feed = feeds[0];
             feedcount = 1;
