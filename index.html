@@ -12,8 +12,10 @@
 		<script src="angular/MagicMirrorApp.js"></script>
 		<script src="angular/service/FeedService.js"></script>
 		<script src="angular/service/WeatherService.js"></script>
+		<script src="angular/service/MathService.js"></script>
 		<script src="angular/controller/FeedCtrl.js"></script>
 		<script src="angular/controller/ClockCtrl.js"></script>
+		<script src="angular/filter/Weatherfilter.js"></script>
 		<script src="angular/controller/WeatherCtrl.js"></script>
 	</head>
 	<body ng-app="MagicMirrorApp">
@@ -26,11 +28,14 @@
 					<div class="date">
 						<span>{{date}}</span>
 					</div>
-				</div>		
-				<angular-weather city="Houston"></angular-weather>	
+				</div>
 			</div>
 			<div class="row" ng-controller="WeatherCtrl">
-				
+				<table>
+					<tr ng-repeat="weather in forecast">
+						<td>{{weather.main.temp}} &deg;C</td>
+					</tr>
+				</table>
 			</div>
 			<div class="row">
 			    <div data-ng-controller="FeedCtrl">

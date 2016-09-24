@@ -1,9 +1,10 @@
 var feedcount = 0;
+var feeds = [];
 
 App.controller("FeedCtrl", ['$scope','FeedService', '$interval', 'config', function ($scope,Feed,$interval,config) {
     getnews = function () {
             Feed.parseFeed(config.newsFeedRssUrl).then(function(res){
-            feeds=res.data.responseData.feed.entries;
+            feeds = res.data.responseData.feed.entries;
             $scope.feed = feeds[0];
             feedcount = 1;
         });
