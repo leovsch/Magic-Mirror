@@ -20,3 +20,18 @@ a {
 .date {
 	font-size: 40px;
 }
+
+.align-bottom {
+	position:absolute; 
+	bottom: 0px; 
+	width: 100%;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 40px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}

@@ -31,14 +31,18 @@
 				</div>
 			</div>
 			<div class="row" ng-controller="WeatherCtrl">
-				<table>
-					<tr ng-repeat="weather in forecast">
-						<td>{{weather.main.temp}} &deg;C</td>
-					</tr>
-				</table>
+				<div class="col-md-2">
+					<table class="table">
+						<tr ng-repeat="weather in forecast">
+							<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="weather.weather[0].icon" /></td>
+							<td>{{weather.main.temp}} &deg;C</td>
+						</tr>
+					</table>
+				</div>
+				
 			</div>
-			<div class="row">
-			    <div data-ng-controller="FeedCtrl">
+			<div class="row align-bottom">
+			    <div data-ng-controller="FeedCtrl" class="bottom-align-text">
 			        <div>                
 		                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
 		                <p class="text-left">{{feed.content}}</p>           
