@@ -30,8 +30,18 @@ a {
 	padding-bottom: 40px;
 }
 
+.browse .textContainer { 
+    height: 430px; 
+    line-height: 400px;
+}
+
 .vcenter {
     display: inline-block;
     vertical-align: middle;
     float: none;
+    margin-left: -8px;
+}
+
+.rowcenter {
+	margin: auto; max-width: 300px;
 }

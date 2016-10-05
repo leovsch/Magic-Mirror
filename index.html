@@ -17,6 +17,7 @@
 		<script src="angular/controller/ClockCtrl.js"></script>
 		<script src="angular/filter/Weatherfilter.js"></script>
 		<script src="angular/controller/WeatherCtrl.js"></script>
+		<script src="angular/controller/GreetingCtrl.js"></script>
 	</head>
 	<body ng-app="MagicMirrorApp">
 		<div class="container-fluid">
@@ -30,25 +31,34 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" ng-controller="WeatherCtrl">
-				<div class="col-md-2">
-					<table class="table">
-						<tr ng-repeat="weather in forecast">
-							<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="weather.weather[0].icon" /></td>
-							<td>{{weather.main.temp}} &deg;C</td>
-						</tr>
-					</table>
+			<div>
+				<div class="row" ng-controller="WeatherCtrl">
+					<div class="col-md-2 vcenter">
+						<table class="table">
+							<tr ng-repeat="weather in forecast">
+								<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="weather.weather[0].icon" /></td>
+								<td>{{weather.main.temp}} &deg;C</td>
+							</tr>
+						</table>					
+					</div>		
+					<div class="col-md-8 text-center vcenter">
+	        			<div class="date datetime" ng-controller="GreetingCtrl">
+	        				<span>{{greeting}}</span>
+	        			</div>
+	    			</div>	
+	    			<div class="col-md-2 text-center vcenter">
+	        			<!-- empty column for center of greeting message -->
+	    			</div>		
 				</div>
-				
-			</div>
-			<div class="row align-bottom">
-			    <div data-ng-controller="FeedCtrl" class="bottom-align-text">
-			        <div>                
-		                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
-		                <p class="text-left">{{feed.content}}</p>           
-			        </div>
-			    </div>
-			</div>			
+				<div class="row align-bottom">
+				    <div data-ng-controller="FeedCtrl" class="bottom-align-text">
+				        <div>                
+			                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
+			                <p class="text-left">{{feed.content}}</p>           
+				        </div>
+				    </div>
+				</div>	
+			</div>		
 		</div>		
 	</body>
 </html>
