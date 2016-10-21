@@ -37,7 +37,7 @@
 						<table class="table">
 							<tr ng-repeat="weather in forecast">
 								<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="weather.weather[0].icon" /></td>
-								<td>{{weather.main.temp}} &deg;C</td>
+								<td>{{weather.main.temp}} &deg;C <br />{{weather.dt_txt}}</td>
 							</tr>
 						</table>					
 					</div>		
