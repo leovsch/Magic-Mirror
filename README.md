@@ -9,3 +9,5 @@ So far it contains:
 - Greeting that dissapears after 10 seconds.
 
 The webpage is an angular web app using angular version 1.5.8.
+
+Expanded with motion sensor wich detects when someone is in front of the mirror.
