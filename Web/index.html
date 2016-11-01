@@ -16,6 +16,7 @@
 		<script src="angular/controller/FeedCtrl.js"></script>
 		<script src="angular/controller/ClockCtrl.js"></script>
 		<script src="angular/filter/Weatherfilter.js"></script>
+		<script src="angular/filter/Unsafefilter.js"></script>
 		<script src="angular/controller/WeatherCtrl.js"></script>
 		<script src="angular/controller/GreetingCtrl.js"></script>
 	</head>
@@ -54,7 +55,7 @@
 				    <div data-ng-controller="FeedCtrl" class="bottom-align-text">
 				        <div>                
 			                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
-			                <p class="text-left">{{feed.content}}</p>           
+			                <p ng-bind-html="feed.content | unsafe"></p>           
 				        </div>
 				    </div>
 				</div>	
