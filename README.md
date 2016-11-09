@@ -11,3 +11,5 @@ So far it contains:
 The webpage is an angular web app using angular version 1.5.8.
 
 Expanded with motion sensor wich detects when someone is in front of the mirror.
+- When motion is detected pi turns screen on and starts playing     music
+- When no motion is detected pi turns display off
