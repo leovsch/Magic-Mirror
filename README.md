@@ -1,8 +1,8 @@
 # Magic-Mirror
 
-My implementation of the magic mirror web page :-)
+My implementation of the magic mirror project page :-)
 
-So far it contains:
+So far the web interface contains:
 - A clock
 - A news feed from the dutch news website www.nu.nl
 - Weahter forcast using the openweathermap api.
