@@ -1,6 +1,6 @@
 # Magic-Mirror
 
-My implementation of the magic mirror project page :-)
+My implementation of the magic mirror project :-)
 
 So far the web interface contains:
 - A clock
