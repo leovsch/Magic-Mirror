@@ -2,7 +2,10 @@ App.controller("WeatherCtrl", ['$scope','WeatherService', '$filter', '$interval'
 	
 	setWeather = function() {
 		WeatherService.getWeather().then(function(weather) {
-			$scope.forecast = $filter('forecast')(weather.list);
+			var forecast = $filter('forecast')(weather.list);
+
+			$scope.forecast = forecast.slice(1, forecast.length);
+			$scope.currentWeather = forecast[0];
 		});		
 	}
 

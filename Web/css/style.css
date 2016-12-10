@@ -14,6 +14,7 @@ a {
 }
 
 .clock {
+	margin-top: 50px;
 	font-size: 80px;
 }
 
@@ -44,4 +45,35 @@ a {
 
 .rowcenter {
 	margin: auto; max-width: 300px;
+}
+
+table td img{
+	padding-left: 50px !important;
+}
+
+table tr:last-child{
+	border-bottom: 1px solid #ddd;
+}
+
+.weather{
+	margin: 50px 0 0 0px;
+}
+
+.today{
+	margin-bottom: 50px;
+    padding-left: 50px;
+}
+
+.today img{
+	width: 100%;
+
+}
+
+.today h2{
+	margin: 0;
+	text-align: center;
+}
+
+.footer{
+	margin: 20px;
 }
