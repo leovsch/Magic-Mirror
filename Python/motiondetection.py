@@ -4,6 +4,7 @@ import subprocess
 import lirc
 import random
 import os
+import time
 
 # constant variables
 music_dir = "/home/pi/Music/"
@@ -33,11 +34,13 @@ def motion_detection():
 			print("Turning monitor on")
 			subprocess.call("/opt/vc/bin/tvservice -p", shell=True)
 			monitor_on = True
+			time.sleep(7)
 	else:
 		if monitor_on == True:
 			print("turning monitor off")
 			subprocess.call("/opt/vc/bin/tvservice -o", shell=True)
 			monitor_on = False
+			time.sleep(7)
 
 # function to handle remote input
 def remote_input():
