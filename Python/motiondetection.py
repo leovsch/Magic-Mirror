@@ -13,12 +13,16 @@ music_dir = "/home/pi/Music/"
 playlist = []
 
 # init the motion sensor
-pir = MotionSensor(4, queue_len=15, threshold=0.90)
+pir = MotionSensor(4, queue_len=15)
 monitor_on = True
 
 # init the remote
 sockid = lirc.init("slidepuzzle", blocking = False)
 lirc.load_config_file("/etc/lirc/lircrc")
+
+# current time in millis
+current_milli_time = lambda: int(round(time.time() * 1000))
+current_time = current_milli_time()
 
 # init the music playlist
 for filename in os.listdir(music_dir):
@@ -28,19 +32,22 @@ for filename in os.listdir(music_dir):
 def motion_detection():
 	global monitor_on
 	global playlist
+	global current_time
 
+	difference = current_milli_time() - current_time
 	if pir.motion_detected:
 		if monitor_on == False:
 			print("Turning monitor on")
 			subprocess.call("/opt/vc/bin/tvservice -p", shell=True)
 			monitor_on = True
-			time.sleep(7)
+			current_time = current_milli_time()
 	else:
-		if monitor_on == True:
+		if monitor_on == True and difference >= 30000:
 			print("turning monitor off")
 			subprocess.call("/opt/vc/bin/tvservice -o", shell=True)
 			monitor_on = False
-			time.sleep(7)
+			current_time = current_milli_time()
+
 
 # function to handle remote input
 def remote_input():
