@@ -16,3 +16,5 @@ Expanded with motion sensor wicth detects when someone is in front of the mirror
 
 Expandend with remote so you can control the mirror with a remote
 - Starts playing music when you press the right button on the remote
+
+Expanden with websocketserver so that the remote input can be communicated to the webpage and content can be changed.

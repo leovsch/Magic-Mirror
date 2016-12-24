@@ -1,4 +1,4 @@
-var App = angular.module('MagicMirrorApp', []);
+var App = angular.module('MagicMirrorApp', ['ngWebSocket']);
 
 App.constant('config', {
 	weatherApiKey: '{ApiKey}',

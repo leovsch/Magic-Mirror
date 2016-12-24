@@ -1,5 +1,6 @@
 from gpiozero import MotionSensor
 from gpiozero import DigitalInputDevice
+import websocketserver
 import subprocess
 import lirc
 import random
@@ -57,13 +58,16 @@ def remote_input():
 	input_value = lirc.nextcode()
 	if len(input_value) >= 1:
 		# read the input string
-		intput_string = input_value[0]
-		if intput_string == 'right':
+		input_string = input_value[0]
+		if input_string == 'right':
 			# pick number to play
+			websocketserver.sendMessage(input_string)
 			randint = random.randint(0, len(playlist) - 1) 
 			subprocess.call("omxplayer " + music_dir + playlist[randint], shell=True)
 
-	
+thread = websocketserver.ServerSocketThread(1)
+thread.start()
+
 while True:
 	remote_input()
 	motion_detection()

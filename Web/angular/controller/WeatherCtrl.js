@@ -1,5 +1,5 @@
 App.controller("WeatherCtrl", ['$scope','WeatherService', '$filter', '$interval', 'config', function ($scope,WeatherService, $filter, $interval, config) {
-	
+	console.log("hoi");
 	setWeather = function() {
 		WeatherService.getWeather().then(function(weather) {
 			var forecast = $filter('forecast')(weather.list);
