@@ -18,7 +18,7 @@ pir = MotionSensor(4, queue_len=15)
 monitor_on = True
 
 # init the remote
-sockid = lirc.init("slidepuzzle", blocking = False)
+sockid = lirc.init("magicmirror", blocking = False)
 lirc.load_config_file("/etc/lirc/lircrc")
 
 # current time in millis
@@ -43,7 +43,7 @@ def motion_detection():
 			monitor_on = True
 			current_time = current_milli_time()
 	else:
-		if monitor_on == True and difference >= 30000:
+		if monitor_on == True and difference >= 60000:
 			print("turning monitor off")
 			subprocess.call("/opt/vc/bin/tvservice -o", shell=True)
 			monitor_on = False
@@ -59,11 +59,14 @@ def remote_input():
 	if len(input_value) >= 1:
 		# read the input string
 		input_string = input_value[0]
-		if input_string == 'right':
-			# pick number to play
-			websocketserver.sendMessage(input_string)
+		json = "{ \"ctrl\": \"default\", \"input\":\"" + input_string + "\"}"
+		if input_string == 'middle':
+			# pick number to play			
 			randint = random.randint(0, len(playlist) - 1) 
 			subprocess.call("omxplayer " + music_dir + playlist[randint], shell=True)
+		if input_string == 'right' or input_string == 'left':
+			json = "{ \"ctrl\": \"feed\", \"input\":\"" + input_string + "\"}"
+		websocketserver.sendMessage(json)
 
 thread = websocketserver.ServerSocketThread(1)
 thread.start()

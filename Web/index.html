@@ -5,18 +5,18 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.5.8/angular-locale_nl-nl.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-locale_nl-nl.js"></script>
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
 		<script src="angular/lib/angular-websocket.js"></script>
-		<script src="angular/MagicMirrorApp.js"></script>
+		<script src="angular/MagicMirrorApp.js"></script>		
 		<script src="angular/service/FeedService.js"></script>
 		<script src="angular/service/WeatherService.js"></script>
 		<script src="angular/service/MathService.js"></script>
 		<script src="angular/filter/Weatherfilter.js"></script>
-		<script src="angular/filter/Unsafefilter.js"></script>
-		<script src="angular/factory/SocketFactory.js"></script>
+		<script src="angular/filter/Unsafefilter.js"></script>	
+		<script src="angular/factory/SocketFactory.js"></script>	
 		<script src="angular/controller/FeedCtrl.js"></script>
 		<script src="angular/controller/ClockCtrl.js"></script>
 		<script src="angular/controller/WeatherCtrl.js"></script>
@@ -38,13 +38,13 @@
 				<div class="row" ng-controller="WeatherCtrl">
 					<div class="vcenter weather">
 						<div class="today">
-							<img src="img/weather-icons/{{currentWeather.weather[0].icon}}.png" alt="currentWeather.weather[0].icon" />
+							<img src="img/weather-icons/{{currentWeather.weather[0].icon}}.png" alt="{{currentWeather.weather[0].icon}}" />
 							<h2>{{currentWeather.main.temp}} &deg;C</h2>
 							<h2>{{currentWeather.dt_txt}}</h2>
 						</div>
 						<table class="table">
 							<tr ng-repeat="weather in forecast">
-								<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="weather.weather[0].icon" /></td>
+								<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="{{weather.weather[0].icon}}" /></td>
 								<td>{{weather.main.temp}} &deg;C <br />{{weather.dt_txt}}</td>
 							</tr>
 						</table>					
@@ -60,7 +60,9 @@
 				</div>
 				<div class="row footer align-bottom">
 					<div class="col-md-1">
-						<img src="img/chevron-icons/left-chevron.png" alt="chevron-left" />
+						<div class="news-chevron">
+				    		<img src="img/chevron-icons/left-chevron.png" alt="chevron-left" />
+				    	</div>
 					</div>
 				    <div data-ng-controller="FeedCtrl" class="col-md-10 bottom-align-text">
 				        <div>                
@@ -69,7 +71,9 @@
 				        </div>
 				    </div>
 				    <div class="col-md-1">
-				    	<img src="img/chevron-icons/right-chevron.png" alt="chevron-right" />
+				    	<div class="news-chevron">
+				    		<img src="img/chevron-icons/right-chevron.png" alt="chevron-right" />
+				    	</div>				    	
 				    </div>
 				</div>	
 			</div>		

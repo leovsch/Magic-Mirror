@@ -73,3 +73,7 @@ table tr:last-child{
 	margin: 0;
 	text-align: center;
 }
+
+.news-chevron img {
+	margin-top: 70px;
+}

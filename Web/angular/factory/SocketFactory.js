@@ -1,16 +1,17 @@
-App.factory('WSC', function ($websocket) {
+App.factory('WSC', function (config, $rootScope, $websocket) {
     // Open a WebSocket connection
-    var url = "ws://localhost:8080/";
+    console.log(config.webSocketUrl);
+    var url = config.webSocketUrl;
     var ws;
 
-    console.log('start connecting');
     ws = $websocket(url);
     ws.onMessage(function (event) {
         console.log('message: ', event.data);
         var response;
         try {
-            response = event.data;
+            response = angular.fromJson(event.data);
             console.log(response);
+            $rootScope.$emit(response.ctrl, response.input);
         } catch (e) {
             console.log(e);
         }
@@ -30,4 +31,6 @@ App.factory('WSC', function ($websocket) {
             return ws.readyState;
         }
     };
-});
+}).run(['WSC', function(WSC) {
+    // call a run so that the factory executes 
+}]);
