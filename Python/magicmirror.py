@@ -37,13 +37,13 @@ def motion_detection():
 
 	difference = current_milli_time() - current_time
 	if pir.motion_detected:
-		if monitor_on == False:
+		if monitor_on == False and difference >= 30000:
 			print("Turning monitor on")
 			subprocess.call("/opt/vc/bin/tvservice -p", shell=True)
 			monitor_on = True
 			current_time = current_milli_time()
 	else:
-		if monitor_on == True and difference >= 60000:
+		if monitor_on == True and difference >= 90000:
 			print("turning monitor off")
 			subprocess.call("/opt/vc/bin/tvservice -o", shell=True)
 			monitor_on = False

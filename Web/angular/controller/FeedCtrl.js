@@ -27,7 +27,6 @@ App.controller("FeedCtrl", ['$scope','FeedService', '$interval', 'config', '$roo
     }, config.newsScrollInterval);
 
     $rootScope.$on('feed', function (event, data) {
-        console.log(data);
         if(data == "right") {
             if(newsfeedindex < config.newsFeedRssUrl.length - 1) {
                 newsfeedindex++;
