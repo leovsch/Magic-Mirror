@@ -43,7 +43,7 @@ def motion_detection():
 			monitor_on = True
 			current_time = current_milli_time()
 	else:
-		if monitor_on == True and difference >= 90000:
+		if monitor_on == True and difference >= 180000:
 			print("turning monitor off")
 			subprocess.call("/opt/vc/bin/tvservice -o", shell=True)
 			monitor_on = False
@@ -66,6 +66,8 @@ def remote_input():
 			subprocess.call("omxplayer " + music_dir + playlist[randint], shell=True)
 		if input_string == 'right' or input_string == 'left':
 			json = "{ \"ctrl\": \"feed\", \"input\":\"" + input_string + "\"}"
+		if input_string == 'B':
+			subprocess.call("halt", shell=True)
 		websocketserver.sendMessage(json)
 
 thread = websocketserver.ServerSocketThread(1)

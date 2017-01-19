@@ -5,10 +5,11 @@ var newsfeedindex = 0;
 App.controller("FeedCtrl", ['$scope','FeedService', '$interval', 'config', '$rootScope', function ($scope,Feed,$interval,config,$rootScope) {
 
     getnews = function (url) {
-            Feed.parseFeed(url).then(function(res){
-            feeds = res.data.responseData.feed.entries;
-            $scope.feed = feeds[0];
-            feedcount = 1;
+            Feed.parseFeed(url).then(function(res) {
+                console.log(res);
+                feeds = res.data.items;
+                $scope.feed = feeds[0];
+                feedcount = 1;
         });
     }
 
