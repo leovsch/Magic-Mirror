@@ -6,7 +6,6 @@ App.controller("FeedCtrl", ['$scope','FeedService', '$interval', 'config', '$roo
 
     getnews = function (url) {
             Feed.parseFeed(url).then(function(res) {
-                console.log(res);
                 feeds = res.data.items;
                 $scope.feed = feeds[0];
                 feedcount = 1;
