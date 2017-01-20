@@ -40,7 +40,8 @@ def motion_detection():
 		if monitor_on == False and difference >= 30000:
 			print("Turning monitor on")
 			subprocess.call("/opt/vc/bin/tvservice -p", shell=True)
-			json = "hoi"			
+			input_string = "motiondetected"
+			json = "{ \"ctrl\": \"greeting\", \"input\":\"" + input_string + "\"}"						
 			monitor_on = True
 			current_time = current_milli_time()
 			websocketserver.sendMessage(json)

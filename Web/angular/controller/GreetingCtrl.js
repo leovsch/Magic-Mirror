@@ -24,6 +24,7 @@ App.controller("GreetingCtrl", ['$scope', '$interval', 'config', 'MathService', 
         }
     });
     $rootScope.$on('greeting', function(event, data) {
+        console.log(data);
         if(data == "motiondetected") {
             $scope.greeting = config.greetings[MathService.drawRandomNumber(0, config.greetings.length)]
             newsGreeting = $interval(clearGreeting, 10000, 1);

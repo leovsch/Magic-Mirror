@@ -38,13 +38,13 @@
 				<div class="row" ng-controller="WeatherCtrl">
 					<div class="vcenter weather">
 						<div class="today">
-							<img src="img/weather-icons/{{currentWeather.weather[0].icon}}.png" alt="{{currentWeather.weather[0].icon}}" />
+							<img ng-src="img/weather-icons/{{currentWeather.weather[0].icon}}.png" alt="{{currentWeather.weather[0].icon}}" />
 							<h2>{{currentWeather.main.temp}} &deg;C</h2>
 							<h2>{{currentWeather.dt_txt}}</h2>
 						</div>
 						<table class="table">
 							<tr ng-repeat="weather in forecast">
-								<td><img src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="{{weather.weather[0].icon}}" /></td>
+								<td><img ng-src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="{{weather.weather[0].icon}}" /></td>
 								<td>{{weather.main.temp}} &deg;C <br />{{weather.dt_txt}}</td>
 							</tr>
 						</table>					

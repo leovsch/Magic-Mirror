@@ -6,15 +6,24 @@ App.factory('WSC', function (config, $rootScope, $websocket) {
 
     ws = $websocket(url);
     ws.onMessage(function (event) {
-        console.log('message: ', event.data);
-        var response;
-        try {
-            response = angular.fromJson(event.data);
-            console.log(response);
-            $rootScope.$emit(response.ctrl, response.input);
-        } catch (e) {
-            console.log(e);
+        console.log(event);
+        if (event.data instanceof Blob){
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                var response = angular.fromJson(reader.result);
+                console.log(response);
+                $rootScope.$emit(response.ctrl, response.input);
+            }
+            reader.readAsBinaryString(event.data);
         }
+        else {
+            try {
+                var response = angular.fromJson(event.data);
+                $rootScope.$emit(response.ctrl, response.input);
+            } catch (e) {
+                console.log(e);
+            }
+        }        
     });
     ws.onError(function (event) {
         console.log('connection Error', event);
