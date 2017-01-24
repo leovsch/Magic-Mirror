@@ -5,6 +5,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="https://apis.google.com/js/api.js"></script>
+		<script src="https://apis.google.com/js/client.js"></script>
 		<script src="lib/angular.min.js"></script>
 		<script src="lib/angular-locale_nl-nl.js"></script>
 		<script src="lib/jquery.min.js"></script>
@@ -14,6 +16,7 @@
 		<script src="angular/service/FeedService.js"></script>
 		<script src="angular/service/WeatherService.js"></script>
 		<script src="angular/service/MathService.js"></script>
+		<script src="angular/service/CalendarService.js"></script>
 		<script src="angular/filter/Weatherfilter.js"></script>
 		<script src="angular/filter/Unsafefilter.js"></script>	
 		<script src="angular/factory/SocketFactory.js"></script>	
@@ -21,6 +24,8 @@
 		<script src="angular/controller/ClockCtrl.js"></script>
 		<script src="angular/controller/WeatherCtrl.js"></script>
 		<script src="angular/controller/GreetingCtrl.js"></script>
+		<script src="angular/controller/CalendarCtrl.js"></script>		
+    </script>
 	</head>
 	<body ng-app="MagicMirrorApp">
 		<div class="container-fluid">
@@ -36,9 +41,9 @@
 			</div>
 			<div>
 				<div class="row" ng-controller="WeatherCtrl">
-					<div class="vcenter weather">
+					<div class="col-md-2 col-md-2-nopadding vcenter weather">
 						<div class="today">
-							<img ng-src="img/weather-icons/{{currentWeather.weather[0].icon}}.png" alt="{{currentWeather.weather[0].icon}}" />
+							<img ng-src="img/weather-icons/{{currentWeather.weather[0].icon}}Big.png" alt="{{currentWeather.weather[0].icon}}Big" />
 							<h2>{{currentWeather.main.temp}} &deg;C</h2>
 							<h2>{{currentWeather.dt_txt}}</h2>
 						</div>
@@ -54,8 +59,44 @@
 	        				<span>{{greeting}}</span>
 	        			</div>
 	    			</div>	
-	    			<div class="col-md-2 text-center vcenter">
-	        			<!-- empty column for center of greeting message -->
+	    			<div class="col-md-2 col-md-2-nopadding vcenter">
+	        			<div ng-controller="CalendarCtrl">
+	        				<div class="calendar">
+	        					<div class="upcomingEvent">
+	        						<div class="calendar-data">
+	        							<div class="calendar-icon">
+	        								<img src="img/calendar-icons/clock.png" alt="clock-icon" ng-show="calendarLoaded"/>
+	        							</div>
+	        							<div class="calendar-header">
+	        								<h3>{{ upcomingEvent.start.dateTime | date : 'dd-MM  hh:mm' }}</h3>	        							
+	        							</div>
+	        						</div>
+	        						<div class="calendar-data">
+	        							<div class="calendar-icon">
+		        							<img src="img/calendar-icons/calendar.png" alt="calendar-icon" ng-show="calendarLoaded"/>
+		        						</div>
+		        						<div class="calendar-header">
+		        							<h3>{{ upcomingEvent.summary }}</h3>
+		        						</div>
+	        						</div>
+	        						<div class="calendar-data">
+	        							<div class="calendar-icon">
+		        							<img src="img/calendar-icons/location.png" alt="calendar-icon" ng-show="calendarLoaded"/>
+		        						</div>
+		        						<div class="calendar-header">
+		        							<h3>{{ upcomingEvent.location | limitTo:11}}</h3>
+		        						</div>
+		        					</div>																		
+								</div>
+	        					<table class="table" >
+									<tr ng-repeat="event in events">
+										<td ">
+											<span>{{ event.start.dateTime | date : 'dd-MM'}} {{event.summary | limitTo:9}}</span>
+										</td>
+									</tr>
+								</table>
+	        				</div>								
+	        			</div>
 	    			</div>		
 				</div>
 				<div class="row footer align-bottom">

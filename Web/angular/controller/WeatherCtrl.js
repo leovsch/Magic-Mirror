@@ -2,10 +2,11 @@ App.controller("WeatherCtrl", ['$scope','WeatherService', '$filter', '$interval'
 	console.log("hoi");
 	setWeather = function() {
 		WeatherService.getWeather().then(function(weather) {
-			var forecast = $filter('forecast')(weather.list);
-
-			$scope.forecast = forecast.slice(1, forecast.length);
-			$scope.currentWeather = forecast[0];
+			if(!angular.isUndefined(weather.list)) {
+				var forecast = $filter('forecast')(weather.list);
+				$scope.forecast = forecast.slice(1, forecast.length);
+				$scope.currentWeather = forecast[0];
+			}
 		});		
 	}
 

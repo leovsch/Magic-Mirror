@@ -29,7 +29,7 @@ App.controller("GreetingCtrl", ['$scope', '$interval', 'config', 'MathService', 
             $scope.greeting = config.greetings[MathService.drawRandomNumber(0, config.greetings.length)]
             newsGreeting = $interval(clearGreeting, 10000, 1);
         }
-    })
+    });
 
     function clearGreeting() {
     	$scope.greeting = ""; 

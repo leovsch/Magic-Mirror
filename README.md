@@ -7,6 +7,7 @@ So far the web interface contains:
 - A news feed from the dutch news website www.nu.nl
 - Weahter forcast using the openweathermap api.
 - Greeting that dissapears after 10 seconds.
+- Google calendar 
 
 The webpage is an angular web app using angular version 1.5.8.
 

@@ -40,7 +40,7 @@ a {
     display: inline-block;
     vertical-align: middle;
     float: none;
-    margin-left: -8px;
+    margin-left: -5px;
 }
 
 .rowcenter {
@@ -60,8 +60,7 @@ table tr:last-child{
 }
 
 .today{
-	margin-bottom: 50px;
-    padding-left: 50px;
+	margin-bottom: 30px;
 }
 
 .today img{
@@ -70,10 +69,39 @@ table tr:last-child{
 }
 
 .today h2{
-	margin: 0;
 	text-align: center;
 }
 
 .news-chevron img {
 	margin-top: 70px;
+}
+
+.calendar {
+	margin-bottom: 40px;
+}
+
+.calendar-data {
+
+	clear: both;
+}
+
+.calendar-data .calendar-header {
+	float: left;
+	margin-left: 5px;
+}
+
+.upcomingEvent .calendar-icon {
+	float: left;    
+	margin-top: 15px;
+}
+
+.upcomingEvent {
+	margin-bottom: 50px;
+}
+
+@media (min-width: 992px) {}
+	.col-md-2-nopadding {
+    	padding-right: 0 !important;
+    	padding-left: 0 !important; 
+	}
 }
