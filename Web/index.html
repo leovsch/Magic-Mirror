@@ -76,7 +76,7 @@
 		        							<img src="img/calendar-icons/calendar.png" alt="calendar-icon" ng-show="calendarLoaded"/>
 		        						</div>
 		        						<div class="calendar-header">
-		        							<h3>{{ upcomingEvent.summary }}</h3>
+		        							<h3>{{ upcomingEvent.summary | limitTo:9}}</h3>
 		        						</div>
 	        						</div>
 	        						<div class="calendar-data">
@@ -84,7 +84,7 @@
 		        							<img src="img/calendar-icons/location.png" alt="calendar-icon" ng-show="calendarLoaded"/>
 		        						</div>
 		        						<div class="calendar-header">
-		        							<h3>{{ upcomingEvent.location | limitTo:11}}</h3>
+		        							<h3>{{ upcomingEvent.location | limitTo:9}}</h3>
 		        						</div>
 		        					</div>																		
 								</div>

@@ -1,8 +1,8 @@
 var App = angular.module('MagicMirrorApp', ['ngWebSocket']);
 
 App.constant('config', {
-	googleApiKey: '{GoogleApiKey}',
-	googleClientID: '{GoogleClientID}.apps.googleusercontent.com',
+	googleApiKey: '{googleApiKey}',
+	googleClientID: '{googleClientID}.apps.googleusercontent.com',
 	weatherApiKey: '{ApiKey}',
 	weatherCityID: '2746301', // Tilburg
 	newsFeedRssUrl: ['http://www.nu.nl/rss/algemeen', 'http://www.nu.nl/rss/tech', 'http://www.nu.nl/rss/sport'],
@@ -13,5 +13,6 @@ App.constant('config', {
 	getWheaterInterval: 3600000, // milliseconds (1 hour)
     newsScrollInterval: 30000, // miliseconds (30 seconds)
     newsCategoryShowInterval: 2000, // milliseconds (2 seconds)
+    requestCalendarInterval: 3600000, // milliseconds (1 hour)
     webSocketUrl: "ws://192.168.0.101:8080/"
 });

@@ -14,7 +14,7 @@ music_dir = "/home/pi/Music/"
 playlist = []
 
 # init the motion sensor
-pir = MotionSensor(4, queue_len=15)
+pir = MotionSensor(4)
 monitor_on = True
 
 # init the remote
@@ -32,18 +32,17 @@ for filename in os.listdir(music_dir):
 # function to handle motion detection
 def motion_detection():
 	global monitor_on
-	global playlist
 	global current_time
 
 	difference = current_milli_time() - current_time
 	if pir.motion_detected:
+		current_time = current_milli_time()
 		if monitor_on == False and difference >= 30000:
 			print("Turning monitor on")
 			subprocess.call("/opt/vc/bin/tvservice -p", shell=True)
 			input_string = "motiondetected"
 			json = "{ \"ctrl\": \"greeting\", \"input\":\"" + input_string + "\"}"						
-			monitor_on = True
-			current_time = current_milli_time()
+			monitor_on = True			
 			websocketserver.sendMessage(json)
 	else:
 		if monitor_on == True and difference >= 180000:
@@ -79,3 +78,4 @@ thread.start()
 while True:
 	remote_input()
 	motion_detection()
+	time.sleep(0.5)
