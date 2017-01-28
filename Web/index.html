@@ -79,7 +79,7 @@
 		        							<h3>{{ upcomingEvent.summary | limitTo:9}}</h3>
 		        						</div>
 	        						</div>
-	        						<div class="calendar-data">
+	        						<div class="calendar-data" ng-show="upcomingEventLocation">
 	        							<div class="calendar-icon">
 		        							<img src="img/calendar-icons/location.png" alt="calendar-icon" ng-show="calendarLoaded"/>
 		        						</div>
