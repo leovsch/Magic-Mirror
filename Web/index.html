@@ -99,20 +99,20 @@
 	        			</div>
 	    			</div>		
 				</div>
-				<div class="row footer align-bottom">
+				<div ng-controller="FeedCtrl" class="row footer align-bottom">
 					<div class="col-md-1">
-						<div class="news-chevron">
+						<div class="news-chevron" ng-show="ShowChevronLeft">
 				    		<img src="img/chevron-icons/left-chevron.png" alt="chevron-left" />
 				    	</div>
 					</div>
-				    <div data-ng-controller="FeedCtrl" class="col-md-10 bottom-align-text">
+				    <div  class="col-md-10 bottom-align-text">
 				        <div>                
 			                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
 			                <p ng-bind-html="feed.content | unsafe"></p>           
 				        </div>
 				    </div>
 				    <div class="col-md-1">
-				    	<div class="news-chevron">
+				    	<div class="news-chevron" ng-show="ShowChevronRight">
 				    		<img src="img/chevron-icons/right-chevron.png" alt="chevron-right" />
 				    	</div>				    	
 				    </div>
