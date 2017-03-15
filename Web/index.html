@@ -16,7 +16,7 @@
 		<script src="angular/service/FeedService.js"></script>
 		<script src="angular/service/WeatherService.js"></script>
 		<script src="angular/service/MathService.js"></script>
-		<script src="angular/service/CalendarService.js"></script>
+		<script src="angular/service/GoogleService.js"></script>
 		<script src="angular/filter/Weatherfilter.js"></script>
 		<script src="angular/filter/Unsafefilter.js"></script>	
 		<script src="angular/factory/SocketFactory.js"></script>	
@@ -90,7 +90,7 @@
 								</div>
 	        					<table class="table" >
 									<tr ng-repeat="event in events">
-										<td ">
+										<td>
 											<span>{{ event.start.dateTime | date : 'dd-MM'}} {{event.summary | limitTo:9}}</span>
 										</td>
 									</tr>

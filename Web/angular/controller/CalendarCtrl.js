@@ -1,10 +1,10 @@
-App.controller("CalendarCtrl", ['$scope', 'CalendarService', '$rootScope', '$interval', 'config', function ($scope,CalendarService,$rootScope,$interval,config) {
+App.controller("CalendarCtrl", ['$scope', 'GoogleService', '$rootScope', '$interval', 'config', function ($scope,GoogleService,$rootScope,$interval,config) {
 	
 	$scope.calendarLoaded = false;
 	$scope.upcomingEventLocation = false;
 
-	requestCalendar = function() {
-		CalendarService.makeApiCall().then(function(apiresponse) {
+	requestCalendar = function() {		
+		GoogleService.requestCalendarEvents().then(function(apiresponse) {
 	    	$scope.events = apiresponse.slice(1, apiresponse.length);
 	    	var upcomingEvent = apiresponse[0];
 	    	if (!angular.isUndefined(upcomingEvent.location)) {
@@ -25,6 +25,11 @@ App.controller("CalendarCtrl", ['$scope', 'CalendarService', '$rootScope', '$int
         if(data == true) {        	
             requestCalendar();
             $interval(requestCalendar, config.requestCalendarInterval);
+            GoogleService.requestFitDataSources().then(function(apiresponse) {
+            	angular.forEach(apiresponse, function(value) {
+            		GoogleService.requestFitDataFromSoure(value);
+            	});
+            });
         }
     })
 	

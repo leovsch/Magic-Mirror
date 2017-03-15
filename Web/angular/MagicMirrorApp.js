@@ -4,6 +4,7 @@ App.constant('config', {
 	googleApiKey: '{GoogleApiKey}',
 	googleClientID: '{GoogleClientID}.apps.googleusercontent.com',
 	weatherApiKey: '{ApiKey}',
+	googleUserId: 'leo.25.1996@gmail.com',
 	weatherCityID: '2746301', // Tilburg
 	newsFeedRssUrl: ['http://www.nu.nl/rss/algemeen', 'http://www.nu.nl/rss/tech', 'http://www.nu.nl/rss/sport', 'http://feeds.feedburner.com/tweakers/games'],
 	newsFeedCategories: ['Algemeen', 'Tech', 'Sport', 'Games'],
