@@ -12,7 +12,7 @@ App.factory('GoogleService', ['$rootScope', '$q', 'config', function($rootScope,
         // OAuth 2.0 client ID and scopes (space delimited string) to request access.
         gapi.client.init({
             apiKey: config.googleApiKey,
-            discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest", 'https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest'],
+            discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest', 'https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest'],
             clientId: config.googleClientID,
             scope: 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/fitness.activity.read https://www.googleapis.com/auth/fitness.activity.write https://www.googleapis.com/auth/fitness.location.read https://www.googleapis.com/auth/fitness.location.write https://www.googleapis.com/auth/fitness.body.read https://www.googleapis.com/auth/fitness.body.write'
         }).then(function() {
