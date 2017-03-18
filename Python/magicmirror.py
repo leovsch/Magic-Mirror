@@ -15,7 +15,7 @@ playlist = []
 
 # init the motion sensor
 pir = MotionSensor(4)
-monitor_on = True
+monitor_on = False
 
 # init the remote
 sockid = lirc.init("magicmirror", blocking = False)
@@ -40,8 +40,7 @@ def motion_detection():
 		if monitor_on == False and difference >= 30000:
 			print("Turning monitor on")
 			subprocess.call("/opt/vc/bin/tvservice -p", shell=True)
-			input_string = "motiondetected"
-			json = "{ \"ctrl\": \"greeting\", \"input\":\"" + input_string + "\"}"						
+			json = "{ \"ctrl\": \"greeting\", \"input\":\"motiondetected\"}"						
 			monitor_on = True			
 			websocketserver.sendMessage(json)
 	else:
