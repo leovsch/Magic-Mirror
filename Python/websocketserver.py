@@ -20,22 +20,27 @@ class ServerSocketThread(threading.Thread):
 		self._stop.set()
 
 clients = []
+mirror_client = None
 class SimpleEcho(WebSocket):
 
     def handleMessage(self):
-        # echo message back to client
+        self.sendMessage(self.data)
         print("Message recieved")
-
+	
     def handleConnected(self):
         print(self.address, 'connected')
-        clients.append(self)
+        if self.address == '192.168.0.110':
+            mirror_client = self
+        else:
+            clients.append(self)
+    
 
     def handleClose(self):
         print(self.address, 'closed')
 
 def sendMessage(message):
-	for client in clients:
-		client.sendMessage(message)
+	if mirror_client != None:
+		mirror_client.sendMessage(message)
 
 # socket server to communicate with the webpage
 server = SimpleWebSocketServer('', 8080, SimpleEcho)

@@ -2,21 +2,24 @@
 <html lang="nl">
 	<head>
 		<title>Magic Mirror!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="https://apis.google.com/js/api.js"></script>
 		<script src="https://apis.google.com/js/client.js"></script>
 		<script src="lib/angular.min.js"></script>
 		<script src="lib/angular-locale_nl-nl.js"></script>
-		<script src="lib/jquery.min.js"></script>
-		<script src="lib/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 		<script src="angular/lib/angular-websocket.js"></script>
 		<script src="angular/MagicMirrorApp.js"></script>		
 		<script src="angular/service/FeedService.js"></script>
 		<script src="angular/service/WeatherService.js"></script>
 		<script src="angular/service/MathService.js"></script>
 		<script src="angular/service/GoogleService.js"></script>
+		<script src="angular/service/CalendarService.js"></script>
 		<script src="angular/filter/Weatherfilter.js"></script>
 		<script src="angular/filter/Unsafefilter.js"></script>	
 		<script src="angular/factory/SocketFactory.js"></script>	
@@ -24,20 +27,35 @@
 		<script src="angular/controller/ClockCtrl.js"></script>
 		<script src="angular/controller/WeatherCtrl.js"></script>
 		<script src="angular/controller/GreetingCtrl.js"></script>
-		<script src="angular/controller/CalendarCtrl.js"></script>		
-    </script>
+		<script src="angular/controller/CalendarCtrl.js"></script>
+		<script src="angular/controller/RemoteCtrl.js"></script>
 	</head>
 	<body ng-app="MagicMirrorApp">
-		<div class="container-fluid">
-			<div class="row" ng-controller="ClockCtrl">
-				<div class="text-center datetime" >
-					<div class="clock">
-						<span>{{clock}}</span>
-					</div>
-					<div class="date">
-						<span>{{date}}</span>
-					</div>
+		<div class="d-sm-block d-md-none" ng-controller="RemoteCtrl">
+			<div class="row">
+				<div class="col-3">
+					<img src="img/chevron-icons/left-chevron.png" alt="chevron-left" ng-click="LeftCheveronClick()" />
+				</div>				
+				<div class="col-6">
+
+				</div>					
+				<div class="col-3">
+					<img src="img/chevron-icons/right-chevron.png" class="float-right" alt="chevron-right" ng-click="RightCheveronClick()" />
 				</div>
+			</div>
+		</div>
+		<div class="d-none d-lg-block container-fluid">
+			<div class="row" ng-controller="ClockCtrl">
+				<div class="col-12 text-center">
+					<div class="datetime" >
+						<div class="clock">
+							<span>{{clock}}</span>
+						</div>
+						<div class="date">
+							<span>{{date}}</span>
+						</div>
+					</div>
+				</div>				
 			</div>
 			<div>
 				<div class="row" ng-controller="WeatherCtrl">

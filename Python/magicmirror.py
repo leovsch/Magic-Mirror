@@ -75,6 +75,6 @@ thread = websocketserver.ServerSocketThread(1)
 thread.start()
 
 while True:
-	remote_input()
+	# remote_input()
 	motion_detection()
 	time.sleep(0.5)

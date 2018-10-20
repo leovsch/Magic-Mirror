@@ -25,6 +25,7 @@ App.factory('WSC', function (config, $rootScope, $websocket) {
             }
         }        
     });
+    
     ws.onError(function (event) {
         console.log('connection Error', event);
     });
@@ -38,6 +39,9 @@ App.factory('WSC', function (config, $rootScope, $websocket) {
     return {
         status: function () {
             return ws.readyState;
+        },
+        sendMessage: function(message) {
+            dataStream.send(JSON.stringify(message));
         }
     };
 }).run(['WSC', function(WSC) {
