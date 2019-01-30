@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+	<head>
+		<title>Magic Mirror!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="https://apis.google.com/js/api.js"></script>
+		<script src="https://apis.google.com/js/client.js"></script>
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-locale_nl-nl.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="angular/lib/angular-websocket.js"></script>
+		<script src="angular/MagicMirrorApp.js"></script>		
+		<script src="angular/service/FeedService.js"></script>
+		<script src="angular/service/WeatherService.js"></script>
+		<script src="angular/service/MathService.js"></script>
+		<script src="angular/service/GoogleService.js"></script>
+		<script src="angular/service/CalendarService.js"></script>
+		<script src="angular/filter/Weatherfilter.js"></script>
+		<script src="angular/filter/Unsafefilter.js"></script>	
+		<script src="angular/factory/SocketFactory.js"></script>	
+		<script src="angular/controller/FeedCtrl.js"></script>
+		<script src="angular/controller/ClockCtrl.js"></script>
+		<script src="angular/controller/WeatherCtrl.js"></script>
+		<script src="angular/controller/GreetingCtrl.js"></script>
+		<script src="angular/controller/CalendarCtrl.js"></script>
+		<script src="angular/controller/RemoteCtrl.js"></script>
+	</head>
+	<body ng-app="MagicMirrorApp">
+		<div class="d-sm-block d-md-none" ng-controller="RemoteCtrl">
+			<div class="row">
+				<div class="col-3">
+					<img src="img/chevron-icons/left-chevron.png" alt="chevron-left" ng-click="LeftCheveronClick()" />
+				</div>				
+				<div class="col-6">
+
+				</div>					
+				<div class="col-3">
+					<img src="img/chevron-icons/right-chevron.png" class="float-right" alt="chevron-right" ng-click="RightCheveronClick()" />
+				</div>
+			</div>
+		</div>
+		<div class="d-none d-lg-block container-fluid">
+			<div class="row" ng-controller="ClockCtrl">
+				<div class="col-12 text-center">
+					<div class="datetime" >
+						<div class="clock">
+							<span>{{clock}}</span>
+						</div>
+						<div class="date">
+							<span>{{date}}</span>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<div>
+				<div class="row" ng-controller="WeatherCtrl">
+					<div class="col-md-2 col-md-2-nopadding vcenter weather">
+						<div class="today">
+							<img ng-src="img/weather-icons/{{currentWeather.weather[0].icon}}Big.png" alt="{{currentWeather.weather[0].icon}}Big" />
+							<h2>{{currentWeather.main.temp}} &deg;C</h2>
+							<h2>{{currentWeather.dt_txt}}</h2>
+						</div>
+						<table class="table">
+							<tr ng-repeat="weather in forecast">
+								<td><img ng-src="img/weather-icons/{{weather.weather[0].icon}}.png" alt="{{weather.weather[0].icon}}" /></td>
+								<td>{{weather.main.temp}} &deg;C <br />{{weather.dt_txt}}</td>
+							</tr>
+						</table>					
+					</div>		
+					<div class="col-md-8 text-center vcenter">
+	        			<div class="date datetime" ng-controller="GreetingCtrl">
+	        				<span>{{greeting}}</span>
+	        			</div>
+	    			</div>	
+	    			<div class="col-md-2 col-md-2-nopadding vcenter">
+	        			<div ng-controller="CalendarCtrl">
+	        				<div class="calendar">
+	        					<div class="upcomingEvent">
+	        						<div class="calendar-data">
+	        							<div class="calendar-icon">
+	        								<img src="img/calendar-icons/clock.png" alt="clock-icon" ng-show="calendarLoaded"/>
+	        							</div>
+	        							<div class="calendar-header">
+	        								<h3>{{ upcomingEvent.start.dateTime | date : 'dd-MM HH:mm'}}</h3>	        							
+	        							</div>
+	        						</div>
+	        						<div class="calendar-data">
+	        							<div class="calendar-icon">
+		        							<img src="img/calendar-icons/calendar.png" alt="calendar-icon" ng-show="calendarLoaded"/>
+		        						</div>
+		        						<div class="calendar-header">
+		        							<h3>{{ upcomingEvent.summary | limitTo:9}}</h3>
+		        						</div>
+	        						</div>
+	        						<div class="calendar-data" ng-show="upcomingEventLocation">
+	        							<div class="calendar-icon">
+		        							<img src="img/calendar-icons/location.png" alt="calendar-icon" ng-show="calendarLoaded"/>
+		        						</div>
+		        						<div class="calendar-header">
+		        							<h3>{{ upcomingEvent.location | limitTo:9}}</h3>
+		        						</div>
+		        					</div>																		
+								</div>
+	        					<table class="table" >
+									<tr ng-repeat="event in events">
+										<td>
+											<span>{{ event.start.dateTime | date : 'dd-MM'}} {{event.summary | limitTo:9}}</span>
+										</td>
+									</tr>
+								</table>
+	        				</div>								
+	        			</div>
+	    			</div>		
+				</div>
+				<div ng-controller="FeedCtrl" class="row footer align-bottom">
+					<div class="col-md-1">
+						<div class="news-chevron" ng-show="ShowChevronLeft">
+				    		<img src="img/chevron-icons/left-chevron.png" alt="chevron-left" />
+				    	</div>
+					</div>
+				    <div  class="col-md-10 bottom-align-text">
+				        <div>                
+			                <h1><a href="{{feed.link}}">{{feed.title}}</a></h1>                                        
+			                <p ng-bind-html="feed.content | unsafe"></p>           
+				        </div>
+				    </div>
+				    <div class="col-md-1">
+				    	<div class="news-chevron" ng-show="ShowChevronRight">
+				    		<img src="img/chevron-icons/right-chevron.png" alt="chevron-right" />
+				    	</div>				    	
+				    </div>
+				</div>	
+			</div>		
+		</div>		
+	</body>
+</html>

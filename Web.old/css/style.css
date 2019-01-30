@@ -1,0 +1,108 @@
+body {
+	font-size: 20px;
+	color: white;
+	background-color: black;
+	font-family:'Roboto';	
+}
+
+a {
+	color: white;
+}
+
+.datetime {
+	font-weight: 300;
+}
+
+.clock {
+	margin-top: 50px;
+	font-size: 80px;
+}
+
+.date {
+	font-size: 40px;
+}
+
+.align-bottom {
+	position:absolute; 
+	bottom: 0px; 
+	width: 100%;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 40px;
+}
+
+.browse .textContainer { 
+    height: 430px; 
+    line-height: 400px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    margin-left: -5px;
+}
+
+.rowcenter {
+	margin: auto; max-width: 300px;
+}
+
+table td img{
+	padding-left: 50px !important;
+}
+
+table tr:last-child{
+	border-bottom: 1px solid #ddd;
+}
+
+.weather{
+	margin: 50px 0 0 0px;
+}
+
+.today{
+	margin-bottom: 30px;
+}
+
+.today img{
+	width: 100%;
+	padding-left: 50px !important;
+}
+
+.today h2{
+	text-align: center;
+	padding-left: 50px !important;
+}
+
+.news-chevron img {
+	margin-top: 70px;
+}
+
+.calendar {
+	margin-bottom: 0;
+}
+
+.calendar-data {
+
+	clear: both;
+}
+
+.calendar-data .calendar-header {
+	float: left;
+	margin-left: 5px;
+}
+
+.upcomingEvent .calendar-icon {
+	float: left;    
+	margin-top: 15px;
+}
+
+.upcomingEvent {
+	margin-bottom: 50px;
+}
+
+@media (min-width: 992px) {}
+	.col-md-2-nopadding {
+    	padding-right: 0 !important;
+    	padding-left: 0 !important; 
+	}
+}
