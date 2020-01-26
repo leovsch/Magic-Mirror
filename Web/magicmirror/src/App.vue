@@ -3,6 +3,7 @@
     <Clock />
     <Weather v-bind:config="config" />
     <Feed v-bind:config="config" />
+    <Calendar v-bind:config="config"/>
   </div>
 </template>
 
@@ -10,22 +11,24 @@
 import Clock from './components/Clock';
 import Weather from './components/Weather';
 import Feed from './components/Feed';
+import Calendar from './components/Calendar'
 
 export default {
   name: 'app',
+  
   components: {
     Clock,
     Weather,
-    Feed
+    Feed,
+    Calendar
   },
   data() {
     return {
       config: {
-        weatherApiKey:'b18493051351936c13a02b5218a12f61',
+        weatherApiKey:'{WhetherApiKey}',
         weatherCityId:'2746301',
-        googleUserId:'{gmail}',
-        googleApiKey: '{apikey}',
-        googleClientID: '{clientid}.apps.googleusercontent.com',
+        googleApiKey: '{ApiKey}',
+        googleClientID: '{ClientId}.apps.googleusercontent.com',
         newsFeedRssUrl: ['http://www.nu.nl/rss/algemeen', 'http://www.nu.nl/rss/tech', 'http://www.nu.nl/rss/sport', 'http://feeds.feedburner.com/tweakers/games']
       }
     }
