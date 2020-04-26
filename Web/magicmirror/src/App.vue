@@ -25,10 +25,10 @@ export default {
   data() {
     return {
       config: {
-        weatherApiKey:'{WhetherApiKey}',
+        weatherApiKey:'{ApiKey}',
         weatherCityId:'2746301',
         googleApiKey: '{ApiKey}',
-        googleClientID: '{ClientId}.apps.googleusercontent.com',
+        googleClientID: '{clientId}.apps.googleusercontent.com',
         newsFeedRssUrl: ['http://www.nu.nl/rss/algemeen', 'http://www.nu.nl/rss/tech', 'http://www.nu.nl/rss/sport', 'http://feeds.feedburner.com/tweakers/games']
       }
     }
