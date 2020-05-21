@@ -1,6 +1,7 @@
 # Magic-Mirror
 
 My implementation of the magic mirror project :-)
+See an impression of the project at: https://www.instructables.com/id/How-to-Build-a-Raspberry-Pi-Smart-Mirror/
 
 So far the web interface contains:
 - A clock
