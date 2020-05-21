@@ -9,7 +9,7 @@ So far the web interface contains:
 - Greeting that dissapears after 10 seconds.
 - Google calendar 
 
-The webpage is an angular web app using angular version 1.5.8.
+The webpage is an VUE web app using VUE2.
 
 Expanded with motion sensor wicth detects when someone is in front of the mirror.
 - When motion is detected pi turns screen on.
@@ -18,7 +18,6 @@ Expanded with motion sensor wicth detects when someone is in front of the mirror
 Expanden with websocketserver so that the remote input can be communicated to the webpage and content can be changed.
 
 Expandend with remote so you can control the mirror with a remote
-- Starts playing random music when you press the middle button on the remote. The music is read from the /home/pi/Music folder.
 - Can scroll through newsfeeds with remote input
 
 
